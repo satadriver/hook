@@ -14,12 +14,23 @@ project("hook32")
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+add_executable( # Sets the name of the library.
+        hookgot
+
+        # Provides a relative path to your source file(s).
+        hookGOT.cpp)
 
 add_executable( # Sets the name of the library.
         hooktest
 
         # Provides a relative path to your source file(s).
         hooktest.c inlineHook.c relocate.c)
+
+add_executable( # Sets the name of the library.
+        simple
+
+        # Provides a relative path to your source file(s).
+        simple.cpp)
 
 add_library( # Sets the name of the library.
         hook32
@@ -56,6 +67,22 @@ target_link_libraries( # Specifies the target library.
 
 target_link_libraries( # Specifies the target library.
         hooktest
+
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib})
+
+
+target_link_libraries( # Specifies the target library.
+        simple
+
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib})
+
+
+target_link_libraries( # Specifies the target library.
+        hookgot
 
         # Links the target library to the log library
         # included in the NDK.
